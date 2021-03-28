@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { initWeb3, loadAdopters } from './store/adoptSlice';
 import PetList  from './components/PetList'
+import Adopters from './components/Adopters';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,13 +17,12 @@ function App() {
  
   useEffect(()=>{
     dispatch(initWeb3());
-  },[])
-
-  useEffect(() => {
     setTimeout(function (){
-      dispatch(loadAdopters)
+      dispatch(loadAdopters())
     },1000 )
-   }, [])
+  },[web3,Adopters])
+
+ 
 
 
 
